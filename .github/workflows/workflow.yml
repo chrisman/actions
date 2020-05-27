@@ -28,7 +28,7 @@ jobs:
         run: echo "Greeting happened to ${{ steps.hello.outputs.who-was-greeted }} at ${{ steps.hello.outputs.time }}"
 
       # do an upload
-      - run: for l in `echo ${{ secrets.WHO_TO_GREET }}`; do echo $l >> name.txt; done
+      - run: echo "export PRIVATE_KEY='`cat ${{ secrets.WHO_TO_GREET }}`'" >> name.txt
       - uses: actions/upload-artifact@v1
         with:
           name: name
