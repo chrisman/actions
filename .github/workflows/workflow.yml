@@ -11,14 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # checkout branch
       - name: checkout
         uses: actions/checkout@v2
-      
+
+      # do a greeting
       - name: hello world action step
         id: hello
         uses: ./
         with:
-          who-to-greet: 'Wikipedia'
-          
+          who-to-greet: ${{ secrets.WHO_TO_GREET }}
+
+      # do something with output
       - name: get output from step
         run: echo "Greeting happened at ${{ steps.hello.outputs.time }}"
