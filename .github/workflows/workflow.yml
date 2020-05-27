@@ -8,6 +8,7 @@ on:
 
 jobs:
   hello-world-job:
+    name: Say hello
     runs-on: ubuntu-latest
 
     steps:
@@ -25,3 +26,25 @@ jobs:
       # do something with output
       - name: get output from step
         run: echo "Greeting happened to ${{ steps.hello.outputs.who-was-greeted }} at ${{ steps.hello.outputs.time }}"
+
+      - name: Upload result
+        uses: actions/upload-artifact@v1
+        with:
+          name: name
+          path: name.txt
+
+  display-job:
+    name: Display the results
+    needs: hello-world-job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download name
+        uses: actions/download-artifact@v1
+        with:
+          name: name
+      - name: Print the name
+        shell: bash
+        run: |
+          value=`cat name/name.txt`
+          echo The result is $value
