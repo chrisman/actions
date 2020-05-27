@@ -1,0 +1,24 @@
+name: hello world
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  hello-world-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      
+      - name: hello world action step
+        id: hello
+        uses: ./
+        with:
+          who-to-greet: 'Wikipedia'
+          
+      - name: get output from step
+        run: echo "Greeting happened at ${{ steps.hello.outputs.time }}
