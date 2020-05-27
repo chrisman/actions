@@ -21,4 +21,4 @@ jobs:
           who-to-greet: 'Wikipedia'
           
       - name: get output from step
-        run: echo "Greeting happened at ${{ steps.hello.outputs.time }}
+        run: echo "Greeting happened at ${{ steps.hello.outputs.time }}"
