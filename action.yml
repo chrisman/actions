@@ -9,6 +9,8 @@ inputs:
 outputs:
   time:
     description: 'The time we greeted you'
+  who-was-greeted:
+    description: 'The person who was greeted'
 runs:
   using: 'docker'
   image: 'Dockerfile'

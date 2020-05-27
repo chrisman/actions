@@ -24,4 +24,4 @@ jobs:
 
       # do something with output
       - name: get output from step
-        run: echo "Greeting happened at ${{ steps.hello.outputs.time }}"
+        run: echo "Greeting happened to ${{ steps.hello.outputs.who-was-greeted }} at ${{ steps.hello.outputs.time }}"
